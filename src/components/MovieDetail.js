@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import { useLocation } from'react-router-dom'
+import React, {useState, useEffect} from 'react';
+import { useLocation } from'react-router-dom';
+import Layout from '../Layout/Layout';
 
 const MovieDetail = () => {
 	let params = useLocation();
@@ -19,8 +20,8 @@ const MovieDetail = () => {
 	}, []);
 
 	return(
-		<div className="container my-4">
-			<div className="container row mb-5">
+		<Layout>
+			<div className="row mb-5">
 	    		<div className="col-12 col-md-4 mb-4 text-center">
 	    			<img src={movieDetail.Poster} alt="movie-poster" className="img-fluid" />
 	    		</div>
@@ -47,7 +48,7 @@ const MovieDetail = () => {
 	    			</ul>
 	    		</div>
 	      	</div>
-	    </div>
+	    </Layout>
 	)
 };
 

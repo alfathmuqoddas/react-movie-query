@@ -1,5 +1,6 @@
 import React, { useState, useEffect }from 'react';
 import {Link} from 'react-router-dom';
+import Layout from './Layout/Layout';
 //import SearchBox from './components/SearchBox'
 
 const App = () => {
@@ -21,9 +22,8 @@ const App = () => {
   }, [searchValue]);
 
   return (
-      <div className='container'>
+      <Layout>
         <div className="">
-          <h1 className="py-4">React + Omdb Movie App</h1>
           <div className="input-group my-3">
               <input type="text" className="form-control" value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
@@ -43,7 +43,7 @@ const App = () => {
             </div>
           )}
         </div>
-      </div>
+      </Layout>
   );
 };
 
