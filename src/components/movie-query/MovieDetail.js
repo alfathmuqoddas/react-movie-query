@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation } from'react-router-dom';
-import Layout from '../Layout/Layout';
+import Layout from '../../Layout/Layout';
 
 const MovieDetail = () => {
 	let params = useLocation();
@@ -21,9 +21,9 @@ const MovieDetail = () => {
 
 	return(
 		<Layout>
-			<div className="row mb-5">
+			<div className="row my-5 gx-5">
 	    		<div className="col-12 col-md-4 mb-4 text-center">
-	    			<img src={movieDetail.Poster} alt="movie-poster" className="img-fluid" />
+	    			<img src={movieDetail.Poster} alt="movie-poster" className="w-100" />
 	    		</div>
 	    		<div className="col-12 col-md-8">
 	    			<h2 className="text-center">{movieDetail.Title} <small>({movieDetail.Year})</small></h2>
@@ -39,7 +39,8 @@ const MovieDetail = () => {
 	    			</div>
 	    			<p>{movieDetail.Plot}</p>
 	    			<ul className="list-group">
-	    				<li className="list-group-item">{movieDetail.Genre}</li>
+	    				<li className="list-group-item"><strong>Genre:</strong> {movieDetail.Genre}</li>
+	    				<li className="list-group-item"><strong>Rated:</strong> {movieDetail.Rated}</li>
 	    				<li className="list-group-item"><strong>Director:</strong> {movieDetail.Director}</li>
 	    				<li className="list-group-item"><strong>Writer:</strong> {movieDetail.Writer}</li>
 	    				<li className="list-group-item"><strong>Starring:</strong> {movieDetail.Actors}</li>

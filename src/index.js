@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import MovieApp from './components/movie-query/MovieApp';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import Home from "./components/Home"
-import MovieDetail from "./components/MovieDetail"
+import MovieDetail from "./components/movie-query/MovieDetail"
 
 const routs = (
    <Router>
       <div>
-         <Route exact path="/" component={App} />
-         <Route exact path="/profile" component={Home} />
+         <Route exact path="/movie" component={MovieApp} />
+         <Route exact path="/" component={Home} />
          <Route exact path="/movie/:id" component={MovieDetail} />
       </div>
     </Router>

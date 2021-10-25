@@ -1,6 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import {Link} from 'react-router-dom';
-import Layout from './Layout/Layout';
+import Layout from '../../Layout/Layout';
+import './MovieApp.css';
 //import SearchBox from './components/SearchBox'
 
 const App = () => {
@@ -31,15 +32,18 @@ const App = () => {
           </div>
         </div>
 
-        <div className='row g-4'>
+        <div className='row g-2 my-5'>
           {movies.map((movie, index) =>
-            <div className='col-md-3'>
-            <Link to={{
-              pathname: `/movie/${movie.imdbID}`,
-              state: { movie }, //pass the data so that you can use it via useLocation
-              }}>
-              <img src={movie.Poster} alt='movie' className="w-100" />
-            </Link>
+            <div className='col-md-3 bg-dark'>
+            <div className='p-2 bright position-relative'>
+              <Link to={{
+                pathname: `/movie/${movie.imdbID}`,
+                state: { movie }, //pass the data so that you can use it via useLocation
+                }}>
+                <img src={movie.Poster} alt='movie' className="w-100" />
+                <div className="position-absolute top-50 start-50 translate-middle middle text-light"><h1>+</h1></div>
+              </Link>
+            </div>
             </div>
           )}
         </div>

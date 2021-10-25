@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
+import React from 'react';
 
-export default function Home() {
+const Home = () => {
 	return(
 		<div className="container">
 			This is Home
 		</div>
 	);
 }
+
+export default Home;
