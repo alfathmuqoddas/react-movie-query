@@ -1,9 +1,9 @@
 import React from 'react';
 import { collection, addDoc, getDocs } from "firebase/firestore"; 
-import { db } from './Firebase'
+import { db, auth } from './Firebase'
 //import Layout from '../../Layout/Layout'
 
-const firebaseApp = () => {
+function firebaseApp() {
 
 	// try {
 	//   const docRef = addDoc(collection(db, "react"), {
