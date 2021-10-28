@@ -1,29 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation } from'react-router-dom';
 import Layout from '../../Layout/Layout';
+import Navbar from '../../Layout/Navbar';
 
 const MovieDetail = () => {
 	let params = useLocation();
 	const { imdbID } = params.state.movie;
-
 	const [movieDetail, setMovieDetail] = useState([]);
+  	const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
-		getMovieDetail();
-		async function getMovieDetail() {
-		    const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=af1284eb&`
+	const getMovieDetail = async () => {
+		try {
+			const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=af1284eb&`
 		    console.log(url);
 		    const res = await fetch(url);
 		    const resJson = await res.json();
 		    setMovieDetail(resJson);
+		    setLoading(true);
+		} catch (e) {
+			console.log(e);
 		}
+	}
+
+	useEffect(() => {
+		getMovieDetail();
 	}, []);
 
 	return(
 		<Layout>
+			<Navbar navTitle={"Movie Detail"} navLink={"/movie"}/>
+			{loading ? 
 			<div className="row my-5 gx-5">
 	    		<div className="col-12 col-md-4 mb-4 text-center">
-	    			<img src={movieDetail.Poster} alt="movie-poster" className="w-100" />
+	    			<img src={movieDetail.Poster} alt="movie-poster" className="w-100 rounded-3" />
 	    		</div>
 	    		<div className="col-12 col-md-8">
 	    			<h2 className="text-center">{movieDetail.Title} <small>({movieDetail.Year})</small></h2>
@@ -49,6 +58,7 @@ const MovieDetail = () => {
 	    			</ul>
 	    		</div>
 	      	</div>
+	      	: <div className="text-center my-5"><h1>Loading...</h1></div> }
 	    </Layout>
 	)
 };

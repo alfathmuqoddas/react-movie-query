@@ -2,6 +2,8 @@ import { initializeApp } from 'firebase/app';
 import React, { useState, useEffect } from 'react';
 import { getFirestore, collection, query, onSnapshot, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import Layout from '../../Layout/Layout';
+import Navbar from '../../Layout/Navbar';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLjXox2BBmOp_RRjVaSKfpGA7QFZI_0rQ",
@@ -24,11 +26,15 @@ const Firebase = () => {
 	//this below is adding task
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
+	const [imgArray, setImgArray] = useState("");
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		const arr = imgArray.replace(/\s/g, '').match(/.{1,22}/g);
 		await addDoc(collection(db, "tasks"), {
-			title,
-			desc,
+			title: title,
+			desc: desc,
+			array: arr,
 			createdAt: new Date(),
 		});
 		setTitle("");
@@ -50,7 +56,6 @@ const Firebase = () => {
 		return () => unsub();
 	}, []);
 	// above is for diplaying task / data from db
-
 	// const toggleComplete = async (task) => {
 	// 	await updateDoc(doc(db, "tasks", task.id), { completed: !task.completed });
 	// };
@@ -60,19 +65,22 @@ const Firebase = () => {
 	};
 
 	return (
+		<Layout>
+		<Navbar navTitle={"React Firebase App"} navLink={"/firebase-app"} navColor={"bg-success"} />
 		<div className="container">
 			<div className="my-5">
 				<h3 className="text-center mb-3">Add Task</h3>
 				<form onSubmit={handleSubmit} class="mx-auto" style={{width: "500px"}}>
-					<input type="text" className="form-control mb-1" placeholder="enter title.." value={title} onChange={(e) => setTitle(e.target.value)} />
-					<input type="text" className="form-control mb-1" placeholder="enter description.." value={desc} onChange={(e) => setDesc(e.target.value)} />
+					<input type="text" className="form-control mb-2" placeholder="enter title.." value={title} onChange={(e) => setTitle(e.target.value)} />
+					<input type="text" className="form-control mb-2" placeholder="enter description.." value={desc} onChange={(e) => setDesc(e.target.value)} />
+					<input type="text" className="form-control mb-2" placeholder="enter description.." value={imgArray} onChange={(e) => setImgArray(e.target.value)} />
 					<input type="submit" className="input-group-text btn btn-primary" value="+" />
 				</form>
 
 			</div>
-			<div className="mx-auto" style={{width: "500px"}}>
+			<div className="mx-auto mb-5" style={{width: "500px"}}>
 				{ tasks.map((task) =>(
-				<div className="task d-flex justify-content-between align-items-center shadow-sm rounded-3 p-2 my-2" key={task.id}>
+				<div className="task d-flex shadowHover justify-content-between align-items-center shadow-sm rounded-3 p-2 my-3" key={task.id}>
 			      <div>
 				      <h4>{task.title}</h4>
 				      <p>{task.desc}</p>
@@ -82,6 +90,7 @@ const Firebase = () => {
 					))}
 			</div>
 		</div>
+		</Layout>
 	)
 };
 

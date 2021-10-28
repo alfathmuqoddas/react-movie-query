@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* movie app */
+.bright:hover img{
+	filter:brightness(60%);
+	transition: 0.3s ease;
+}
+
+.middle{
+	opacity: 0;
+}
+
+.bright:hover .middle {
+	opacity: 1;
+}
+/* movie app */
+
+/* Firebase crud app */
+.shadowHover:hover {
+	transition: 0.3s ease;
+	box-shadow: rgba(0, 0, 0, 0.15) 0 0.5rem 1rem !important;
+}
+/* firebase crud app */
+
+
