@@ -20,8 +20,24 @@ console.log(app);
 console.log(db);
 
 const Firebase = () => {
-	const [tasks, setTasks ] = useState([]);
 
+	//this below is adding task
+	const [title, setTitle] = useState("");
+	const [desc, setDesc] = useState("");
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		await addDoc(collection(db, "tasks"), {
+			title,
+			desc,
+			createdAt: new Date(),
+		});
+		setTitle("");
+		setDesc("");
+	};
+	// above is for adding task
+
+	// below is for diplaying task / data from db
+	const [tasks, setTasks ] = useState([]);
 	useEffect(() => {
 		const q = query(collection(db, "tasks"));
 		const unsub = onSnapshot(q, (querySnapshot) => {
@@ -33,6 +49,7 @@ const Firebase = () => {
 		});
 		return () => unsub();
 	}, []);
+	// above is for diplaying task / data from db
 
 	// const toggleComplete = async (task) => {
 	// 	await updateDoc(doc(db, "tasks", task.id), { completed: !task.completed });
@@ -42,37 +59,25 @@ const Firebase = () => {
 		await deleteDoc(doc(db, "tasks", id));
 	};
 
-	//this below is adding task
-	const [title, setTitle] = useState("");
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		await addDoc(collection(db, "tasks"), {
-			title,
-			createdAt: new Date(),
-		});
-		setTitle("");
-	};
-
 	return (
 		<div className="container">
 			<div className="my-5">
-				<h3 className="text-center">Add Task</h3>
-				<form onSubmit={handleSubmit} class="input-group mx-auto" style={{width: "500px"}}>
-					<input type="text" className="form-control" placeholder="enter task.." value={title} onChange={(e) => setTitle(e.target.value)} />
-					<input type="submit" className="input-group-text btn btn-primary" value="add task" />
+				<h3 className="text-center mb-3">Add Task</h3>
+				<form onSubmit={handleSubmit} class="mx-auto" style={{width: "500px"}}>
+					<input type="text" className="form-control mb-1" placeholder="enter title.." value={title} onChange={(e) => setTitle(e.target.value)} />
+					<input type="text" className="form-control mb-1" placeholder="enter description.." value={desc} onChange={(e) => setDesc(e.target.value)} />
+					<input type="submit" className="input-group-text btn btn-primary" value="+" />
 				</form>
-			</div>
-			<div>
-				{ tasks.map((task) =>(
-				<div className="task d-flex" key={task.id}>
-					<p
-			        // style={{ textDecoration: task.completed && "line-through" }}
-			        // onClick={() => toggleComplete(task)}
-			      >
-			        {task.title}
-			      </p>
 
-			      <button onClick={() => handleDelete(task.id)}>X</button>
+			</div>
+			<div className="mx-auto" style={{width: "500px"}}>
+				{ tasks.map((task) =>(
+				<div className="task d-flex justify-content-between align-items-center shadow-sm rounded-3 p-2 my-2" key={task.id}>
+			      <div>
+				      <h4>{task.title}</h4>
+				      <p>{task.desc}</p>
+				  </div>
+			      <button onClick={() => handleDelete(task.id)} className="btn btn-danger rounded">x</button>
 			    </div>
 					))}
 			</div>

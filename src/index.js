@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 import Home from "./components/Home"
 import MovieDetail from "./components/movie-query/MovieDetail"
 import "./components/firebase-app/Firebase"
-import firebaseApp from "./components/firebase-app/FirebaseApp"
+//import firebaseApp from "./components/firebase-app/FirebaseApp"
 import Firebase from "./components/firebase-app/Firebase"
 
 const routs = (
