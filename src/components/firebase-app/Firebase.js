@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { getFirestore, collection, query, onSnapshot, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import Layout from '../../Layout/Layout';
-import Navbar from '../../Layout/Navbar';
+import UserSignedIn from './userSignedIn';
+import UserSignedOut from './userSignedOut';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDLjXox2BBmOp_RRjVaSKfpGA7QFZI_0rQ",
@@ -39,6 +40,7 @@ const Firebase = () => {
 		});
 		setTitle("");
 		setDesc("");
+		setImgArray("");
 	};
 	// above is for adding task
 
@@ -64,9 +66,12 @@ const Firebase = () => {
 		await deleteDoc(doc(db, "tasks", id));
 	};
 
+	//auth state
+	const user = auth.currentUser
+
 	return (
 		<Layout>
-		<Navbar navTitle={"React Firebase App"} navLink={"/firebase-app"} navColor={"bg-success"} />
+		{ user ? <UserSignedIn /> : <UserSignedOut />}
 		<div className="container">
 			<div className="my-5">
 				<h3 className="text-center mb-3">Add Task</h3>
