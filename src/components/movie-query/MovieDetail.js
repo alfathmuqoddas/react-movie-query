@@ -27,8 +27,8 @@ const MovieDetail = () => {
 	}, []);
 
 	return(
+		<>
 		<Layout>
-			<Navbar navTitle={"Movie Detail"} navLink={"/movie"}/>
 			{loading ? 
 			<div className="row my-5 gx-5">
 	    		<div className="col-12 col-md-4 mb-4 text-center">
@@ -60,6 +60,7 @@ const MovieDetail = () => {
 	      	</div>
 	      	: <div className="text-center my-5"><h1>Loading...</h1></div> }
 	    </Layout>
+	    </>
 	)
 };
 

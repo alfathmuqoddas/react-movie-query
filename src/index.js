@@ -9,6 +9,8 @@ import MovieDetail from "./components/movie-query/MovieDetail"
 import "./components/firebase-app/Firebase"
 //import firebaseApp from "./components/firebase-app/FirebaseApp"
 import Firebase from "./components/firebase-app/Firebase"
+import Login from "./components/firebase-app/Login"
+import Register from "./components/firebase-app/Register"
 
 const routs = (
    <Router>
@@ -17,6 +19,8 @@ const routs = (
          <Route exact path="/" component={Home} />
          <Route exact path="/movie/:id" component={MovieDetail} />
          <Route exact path="/firebase-app" component={Firebase} />
+         <Route exact path="/login" component={Login} />
+         <Route exact path="/register" component={Register} />
       </div>
     </Router>
  );

@@ -24,10 +24,10 @@ const App = () => {
   }, [searchValue]);
 
   return (
+    <>
       <Layout>
-        <Navbar navTitle={"Movie App"} navLink={"/movie"} />
         <div className="">
-          <form className="input-group mt-5 mx-auto" style={{width: '500px'}}>
+          <form className="input-group mt-5 mx-auto w-100" style={{width: '500px'}}>
               <input type="text" className="form-control" value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
               placeholder='Type to search...' />
@@ -50,6 +50,7 @@ const App = () => {
           )}
         </div>
       </Layout>
+    </>
   );
 };
 
