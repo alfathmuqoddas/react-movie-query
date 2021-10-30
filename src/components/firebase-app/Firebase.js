@@ -96,7 +96,7 @@ const Firebase = () => {
 					      <p>{task.desc}</p>
 					  </div>
 				      { user ? 
-				      	<button onClick={() => handleDelete(task.id)} className="btn btn-danger rounded">x</button>
+				      	<button onClick={() => handleDelete(task.id)} className="btn btn-danger rounded">&#128465;</button>
 				      	:
 				      	<div></div>
 				      }

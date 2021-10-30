@@ -35,7 +35,7 @@ body {
 
 .nav > .nav-links {
   display: inline;
-  float: right;
+  margin-left: auto;
   font-size: 18px;
 }
 

@@ -29,14 +29,18 @@ const Login = () => {
 	};
 
 	return (
-		<div className="container my-5 text-center">
-			<h3>Login</h3>
-			<form onSubmit={handleRegister} className="mx-auto" style={{width: "500px"}}>
-				<input type="email" className="form-control mb-2" placeholder="enter email..." value={email} onChange={(e) => setEmail(e.target.value)} />
-				<input type="password" className="form-control mb-2" placeholder="enter password..." value={password} onChange={(e) => setPassword(e.target.value)} />
-				<input type="submit" className="input-group-text btn btn-primary" value="Register" />
-			</form>
-		</div>
+		<>
+			<Navbar />
+			<div className="container my-5 text-center">
+				<h3>Login</h3>
+				<form onSubmit={handleRegister} className="mx-auto my-3" style={{width: "500px"}}>
+					<input type="email" className="form-control mb-2" placeholder="enter email..." value={email} onChange={(e) => setEmail(e.target.value)} />
+					<input type="password" className="form-control mb-2" placeholder="enter password..." value={password} onChange={(e) => setPassword(e.target.value)} />
+					<input type="submit" className="input-group-text btn btn-primary" value="Register" />
+				</form>
+				<div>Doesn't have an account? Register <Link to="/firebase-app/register">here</Link></div>
+			</div>
+		</>
 	)
 }
 

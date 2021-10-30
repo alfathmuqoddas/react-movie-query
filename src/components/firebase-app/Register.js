@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../../Layout/Navbar';
 import {Link, useHistory} from 'react-router-dom';
-import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 
 const Register = () => {
 	const [email, setEmail] = useState('');
@@ -29,14 +29,18 @@ const Register = () => {
 	};
 
 	return (
-		<div className="container text-center my-5">
-			<h3>Register New Account</h3>
-			<form onSubmit={handleRegister} className="mx-auto" style={{width: "500px"}}>
-				<input type="email" className="form-control mb-2" placeholder="enter email..." value={email} onChange={(e) => setEmail(e.target.value)} />
-				<input type="password" className="form-control mb-2" placeholder="enter password..." value={password} onChange={(e) => setPassword(e.target.value)} />
-				<input type="submit" className="input-group-text btn btn-primary" value="Register" />
-			</form>
-		</div>
+		<>
+			<Navbar />
+			<div className="container text-center my-5">
+				<h3>Register New Account</h3>
+				<form onSubmit={handleRegister} className="mx-auto my-3" style={{width: "500px"}}>
+					<input type="email" className="form-control mb-2" placeholder="enter email..." value={email} onChange={(e) => setEmail(e.target.value)} />
+					<input type="password" className="form-control mb-2" placeholder="enter password..." value={password} onChange={(e) => setPassword(e.target.value)} />
+					<input type="submit" className="input-group-text btn btn-primary" value="Register" />
+				</form>
+				<div>Already have an account? Login <Link to="/firebase-app/login">here</Link></div>
+			</div>
+		</>
 	)
 }
 

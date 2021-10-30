@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import "./Navbar.css";
-import {auth} from "../components/firebase-app/Firebase";
-import {signOut, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+import { auth } from "../components/firebase-app/Firebase";
+import { signOut } from "firebase/auth";
 
 const Navbar = (props) => {
 	Navbar.defaultProps = {
@@ -26,7 +26,7 @@ const Navbar = (props) => {
 			  <input type="checkbox" id="nav-check" />
 			  <div className="nav-header">
 			    <div className="nav-title">
-			      Nav
+			      <Link to="/firebase-app" className="text-light text-decoration-none">React Firebase</Link>
 			    </div>
 			  </div>
 			  <div className="nav-btn">
@@ -36,17 +36,18 @@ const Navbar = (props) => {
 			      <span></span>
 			    </label>
 			  </div>
-			  
+
 			  	{ user ? 
 			  		<div className="nav-links">
-				  		<button onClick={SignOut}>Logout</button> 
+				  		<a onClick={SignOut}>Logout</a> 
 				  	</div> 
 					:
 				  	<div className="nav-links">
-			  			<Link to="/login">Login</Link>
-			  			<Link to="/register">Register</Link>
+			  			<Link to="/firebase-app/login">Login</Link>
+			  			<Link to="/firebase-app/register">Register</Link>
 			  		</div>
 			  	}
+
 			</div>
 		</>
 	)

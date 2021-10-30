@@ -19,8 +19,8 @@ const routs = (
          <Route exact path="/" component={Home} />
          <Route exact path="/movie/:id" component={MovieDetail} />
          <Route exact path="/firebase-app" component={Firebase} />
-         <Route exact path="/login" component={Login} />
-         <Route exact path="/register" component={Register} />
+         <Route exact path="/firebase-app/login" component={Login} />
+         <Route exact path="/firebase-app/register" component={Register} />
       </div>
     </Router>
  );
