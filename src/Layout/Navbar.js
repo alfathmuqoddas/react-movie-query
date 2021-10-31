@@ -11,7 +11,6 @@ const Navbar = (props) => {
     
 	const user = auth.currentUser
 	const history = useHistory();
-	console.log("user = " + user);
 
 	const SignOut = (e) => {
 		e.preventDefault();
@@ -39,7 +38,7 @@ const Navbar = (props) => {
 
 			  	{ user ? 
 			  		<div className="nav-links">
-				  		<a onClick={SignOut}>Logout</a> 
+				  		<button className="btn btn-danger" onClick={SignOut}>Logout</button> 
 				  	</div> 
 					:
 				  	<div className="nav-links">

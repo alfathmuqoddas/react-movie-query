@@ -14,16 +14,13 @@ const Login = () => {
 		signInWithEmailAndPassword(auth, email, password)
 		.then((userCredential) => {
 	    // Signed in 
-	    const user = userCredential.user;
-	    console.log(user);
-	    // ...
-	  }).then(() => {
 	  	history.push('/firebase-app');
+	    const user = userCredential.user;
+	    // ...
 	  })
 	  .catch((error) => {
-	    const errorCode = error.code;
 	    const errorMessage = error.message;
-	    console.log(errorMessage);
+	    alert(errorMessage);
 	    // ..
 	  });
 	};
@@ -31,14 +28,16 @@ const Login = () => {
 	return (
 		<>
 			<Navbar />
-			<div className="container my-5 text-center">
-				<h3>Login</h3>
-				<form onSubmit={handleRegister} className="mx-auto my-3" style={{width: "500px"}}>
-					<input type="email" className="form-control mb-2" placeholder="enter email..." value={email} onChange={(e) => setEmail(e.target.value)} />
-					<input type="password" className="form-control mb-2" placeholder="enter password..." value={password} onChange={(e) => setPassword(e.target.value)} />
-					<input type="submit" className="input-group-text btn btn-primary" value="Register" />
+			<div className="container my-5">
+				<h3 className="text-center">Login</h3>
+				<form onSubmit={handleRegister} className="mx-auto my-4" style={{width: "500px"}}>
+					<label htmlFor="email">Email</label>
+					<input type="email" name="email" className="form-control mt-2 mb-3" placeholder="enter email..." value={email} onChange={(e) => setEmail(e.target.value)} required />
+					<label htmlFor="password">Password</label>
+					<input type="password" name="password" className="form-control my-2" placeholder="enter password..." value={password} onChange={(e) => setPassword(e.target.value)} required />
+					<input type="submit" className="input-group-text btn btn-primary" value="Login" />
 				</form>
-				<div>Doesn't have an account? Register <Link to="/firebase-app/register">here</Link></div>
+				<p className="text-center">Doesn't have an account? Register <Link to="/firebase-app/register">here</Link></p>
 			</div>
 		</>
 	)

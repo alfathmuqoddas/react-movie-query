@@ -76,7 +76,7 @@ const Firebase = () => {
 				{ user ? 
 				<div className="my-5">
 					<h3 className="text-center mb-3">Add Task</h3>
-					<form onSubmit={handleSubmit} class="mx-auto" style={{width: "500px"}}>
+					<form onSubmit={handleSubmit} className="mx-auto" style={{width: "500px"}}>
 						<input type="text" className="form-control mb-2" placeholder="enter title.." value={title} onChange={(e) => setTitle(e.target.value)} />
 						<input type="text" className="form-control mb-2" placeholder="enter description.." value={desc} onChange={(e) => setDesc(e.target.value)} />
 						<input type="submit" className="input-group-text btn btn-primary" value="+" />
