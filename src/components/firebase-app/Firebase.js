@@ -67,6 +67,7 @@ const Firebase = () => {
 
 	//auth state
 	const user = auth.currentUser
+	console.log(user);
 
 	return (
 		<>
