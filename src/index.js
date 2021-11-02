@@ -11,6 +11,7 @@ import "./components/firebase-app/Firebase"
 import Firebase from "./components/firebase-app/Firebase"
 import Login from "./components/firebase-app/Login"
 import Register from "./components/firebase-app/Register"
+import EditProfile from "./components/firebase-app/EditProfile"
 
 const routs = (
    <Router>
@@ -21,6 +22,7 @@ const routs = (
          <Route exact path="/firebase-app" component={Firebase} />
          <Route exact path="/firebase-app/login" component={Login} />
          <Route exact path="/firebase-app/register" component={Register} />
+         <Route exact path="/firebase-app/edit-profile" component={EditProfile} />
       </div>
     </Router>
  );

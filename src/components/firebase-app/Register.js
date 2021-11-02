@@ -18,7 +18,7 @@ const Register = () => {
 	    console.log(user);
 	    // ...
 	  }).then(() => {
-	  	history.push('/firebase-app');
+	  	history.push('/edit-profile');
 	  })
 	  .catch((error) => {
 	    const errorCode = error.code;
