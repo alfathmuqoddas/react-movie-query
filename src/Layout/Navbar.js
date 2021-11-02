@@ -9,7 +9,7 @@ const Navbar = (props) => {
 		navColor: 'bg-dark'
 	}
     
-	const user = auth.currentUser
+	const user = auth.currentUser;
 	const history = useHistory();
 
 	const SignOut = (e) => {
