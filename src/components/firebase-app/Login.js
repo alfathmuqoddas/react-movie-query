@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Navbar from '../../Layout/Navbar';
 import {Link, useHistory} from 'react-router-dom';
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
@@ -16,7 +16,7 @@ const Login = () => {
 		.then((userCredential) => {
 	    // Signed in 
 	  	history.push('/firebase-app');
-	    const user = userCredential.user;
+	    //const user = userCredential.user;
 	    // ...
 	  })
 	  .catch((error) => {

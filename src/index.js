@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import MovieApp from './components/movie-query/MovieApp';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { HashRouter as Router, Route } from "react-router-dom"
 import Home from "./components/Home"
 import MovieDetail from "./components/movie-query/MovieDetail"
 import "./components/firebase-app/Firebase"

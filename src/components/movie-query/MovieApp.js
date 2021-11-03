@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import {Link} from 'react-router-dom';
 import Layout from '../../Layout/Layout';
-import Navbar from '../../Layout/Navbar';
+//import Navbar from '../../Layout/Navbar';
 //import SearchBox from './components/SearchBox'
 
 const App = () => {

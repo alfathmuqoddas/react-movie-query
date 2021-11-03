@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, query, onSnapshot, doc, updateDoc, deleteDoc, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, query, onSnapshot, doc, deleteDoc, addDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import Layout from '../../Layout/Layout';
 import Navbar from "../../Layout/Navbar"; 
