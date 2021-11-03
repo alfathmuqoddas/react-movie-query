@@ -27,7 +27,8 @@ const App = () => {
     <>
       <Layout>
         <div className="">
-          <form className="input-group mt-5 mx-auto w-100" style={{width: '500px'}}>
+          <h1 className="mb-2 mt-5">React Movie App</h1>
+          <form className="input-group mx-auto w-100" style={{width: '500px'}}>
               <input type="text" className="form-control" value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
               placeholder='Type to search...' />
