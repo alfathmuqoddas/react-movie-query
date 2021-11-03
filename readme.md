@@ -1,3 +1,14 @@
+# Firebase Task
+a Full stack web application for creating and tracking tasks, built with React as the fron-end and Firebase as back-end. Firebase Service that I use for this project is Firebase Firestore Database and Firebase Authentication.
+
+## Technology Used
+For this project I'm using React, Firebase Firestore, and Firebase Authentication, and also using Bootstrap for creating simple ui.
+
+## The Challenges
+The major challenge of making this App is the Back-end. I overcome this by using Firebase so I don't have to configure the back-end from scratch because Firebase is a back-end as service (baas) so everything is alredy setup by the Firebase I just have to connect my App to Firebase for the back-end service.
+
+---
+
 # React Movie App
 This is a single page web app built with React to looking for an info about a movie. This apps using external api from [OMDb API](http://ombdapi). 
 
