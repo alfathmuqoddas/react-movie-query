@@ -21,7 +21,7 @@ const Navbar = (props) => {
 
 	return (
 		<>
-			<div className="nav">
+			<div className="nav" style={{fontFamily: 'sans-serif'}}>
 			  <input type="checkbox" id="nav-check" />
 			  <div className="nav-header">
 			    <div className="nav-title">

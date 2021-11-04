@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import React, { useState, useEffect } from 'react';
 import { getFirestore, collection, query, onSnapshot, doc, deleteDoc, addDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Layout from '../../Layout/Layout';
 import Navbar from "../../Layout/Navbar"; 
 
@@ -28,6 +28,9 @@ const Firebase = () => {
 	const [desc, setDesc] = useState("");
 	//const [imgArray, setImgArray] = useState("");
 
+	//auth state
+	const user = auth.currentUser;
+	
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		//const arr = imgArray.replace(/\s/g, '').match(/.{1,22}/g);
@@ -42,6 +45,12 @@ const Firebase = () => {
 		//setImgArray("");
 	};
 	// above is for adding task
+
+	//belw to delete task
+	const handleDelete = async (id) => {
+		await deleteDoc(doc(db, "tasks", id));
+	};
+	//above to delete task
 
 	// below is for diplaying task / data from db
 	const [tasks, setTasks ] = useState([]);
@@ -60,14 +69,6 @@ const Firebase = () => {
 	// const toggleComplete = async (task) => {
 	// 	await updateDoc(doc(db, "tasks", task.id), { completed: !task.completed });
 	// };
-
-	const handleDelete = async (id) => {
-		await deleteDoc(doc(db, "tasks", id));
-	};
-
-	//auth state
-	const user = auth.currentUser
-	console.log(user);
 
 	return (
 		<>
