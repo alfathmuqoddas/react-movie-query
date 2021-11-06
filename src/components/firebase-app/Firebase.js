@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, query, onSnapshot, doc, deleteDoc, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, orderBy, query, onSnapshot, doc, deleteDoc, addDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Layout from '../../Layout/Layout';
 import Navbar from "../../Layout/Navbar"; 
@@ -29,15 +29,17 @@ const Firebase = () => {
 	//const [imgArray, setImgArray] = useState("");
 
 	//auth state
-	const user = auth.currentUser;
-	
-	const handleSubmit = async (e) => {
+	const userAuth = auth.currentUser;
+
+	async function handleSubmit(e) {
 		e.preventDefault();
+		const { uid } = auth.currentUser;
 		//const arr = imgArray.replace(/\s/g, '').match(/.{1,22}/g);
 		await addDoc(collection(db, "tasks"), {
 			title: title,
 			desc: desc,
 			//array: arr,
+			uid,
 			createdAt: new Date(),
 		});
 		setTitle("");
@@ -55,7 +57,7 @@ const Firebase = () => {
 	// below is for diplaying task / data from db
 	const [tasks, setTasks ] = useState([]);
 	useEffect(() => {
-		const q = query(collection(db, "tasks"));
+		const q = query(collection(db, "tasks"), orderBy("createdAt", "desc"));
 		const unsub = onSnapshot(q, (querySnapshot) => {
 			let taskArray = [];
 			querySnapshot.forEach((doc) => {
@@ -66,16 +68,13 @@ const Firebase = () => {
 		return () => unsub();
 	}, []);
 	// above is for diplaying task / data from db
-	// const toggleComplete = async (task) => {
-	// 	await updateDoc(doc(db, "tasks", task.id), { completed: !task.completed });
-	// };
 
 	return (
 		<>
 			<Navbar />
 			<Layout>
 			<div className="container">
-				{ user ? 
+				{ userAuth ? 
 				<div className="my-5">
 					<h3 className="text-center mb-3">Add Task</h3>
 					<form onSubmit={handleSubmit} className="mx-auto" style={{width: "500px"}}>
@@ -97,7 +96,7 @@ const Firebase = () => {
 					      <h4>{task.title}</h4>
 					      <p>{task.desc}</p>
 					  </div>
-				      { user ? 
+				      { userAuth ? 
 				      	<button onClick={() => handleDelete(task.id)} className="btn btn-danger rounded">&#128465;</button>
 				      	:
 				      	<div></div>
@@ -110,59 +109,6 @@ const Firebase = () => {
 		</>
 	)
 };
-
-// function Firebase(){
-// const [user] = useAuthState(auth);
-
-// 	return (
-// 		<div>
-// 			<h1>Firebase</h1>
-// 			<header></header>
-// 			<section>
-// 				{ user ? <ChatRoom /> : <SignIn />}
-// 			</section>
-// 		</div>
-// 	);
-// }
-
-// function SignIn() {
-// 	const signInWithGoogle = () => {
-// 		const provider = new GoogleAuthProvider;
-// 		signInWithPopup(auth, provider);
-// 	}
-
-// 	return (
-// 		<button onClick={signInWithGoogle}>Sign In With Google</button>
-// 	);
-// }
-
-// function SignOut() {
-// 	return auth.currentUser && (
-// 		<button onClick={() => auth.signOut()}>Sign Out</button>
-// 	)
-// }
-
-// function ChatRoom() {
-// 	const messagesRef = collection(db, 'messages');
-// 	const q = query(messagesRef, orderBy('createdAt'), limit(25));
-// 	const [messages] = useCollectionData(q, {idField: 'id'});
-
-// 	return (
-// 		<>
-// 			<div>
-// 				{ messages && messages.map((msg, i) => <ChatMessage message={msg} />)}
-// 			</div>
-// 		</>
-// 	);
-// }
-
-// function ChatMessage(props) {
-// 	const { text, uid } = props.message;
-
-// 	return (
-// 	<p>{text}</p>
-// 	);
-// }
 
 export default Firebase;
 
