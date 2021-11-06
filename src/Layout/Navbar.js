@@ -38,8 +38,8 @@ const Navbar = (props) => {
 
 			  	{ user ? 
 			  		<div className="nav-links">
-			  			<button className="btn btn-danger">{user.email}</button>
-				  		<button className="btn btn-danger" onClick={SignOut}>Logout</button> 
+			  			<button className="btn-nav">{user.displayName || user.email}</button>
+				  		<button className="btn-nav" onClick={SignOut}>Logout</button> 
 				  	</div> 
 					:
 				  	<div className="nav-links">

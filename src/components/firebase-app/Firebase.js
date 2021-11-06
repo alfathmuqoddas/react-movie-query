@@ -33,7 +33,7 @@ const Firebase = () => {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		const { uid } = auth.currentUser;
+		const { uid } = userAuth;
 		//const arr = imgArray.replace(/\s/g, '').match(/.{1,22}/g);
 		await addDoc(collection(db, "tasks"), {
 			title: title,
