@@ -38,7 +38,7 @@ const Navbar = (props) => {
 
 			  	{ user ? 
 			  		<div className="nav-links">
-			  			<button className="btn-nav">{user.displayName || user.email}</button>
+			  			<Link to="/firebase-app/profile">{user.displayName || user.email}</Link>
 				  		<button className="btn-nav" onClick={SignOut}>Logout</button> 
 				  	</div> 
 					:

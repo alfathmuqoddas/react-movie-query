@@ -48,12 +48,6 @@ const Firebase = () => {
 	};
 	// above is for adding task
 
-	//belw to delete task
-	const handleDelete = async (id) => {
-		await deleteDoc(doc(db, "tasks", id));
-	};
-	//above to delete task
-
 	// below is for diplaying task / data from db
 	const [tasks, setTasks ] = useState([]);
 	useEffect(() => {
@@ -96,11 +90,6 @@ const Firebase = () => {
 					      <h4>{task.title}</h4>
 					      <p>{task.desc}</p>
 					  </div>
-				      { userAuth ? 
-				      	<button onClick={() => handleDelete(task.id)} className="btn btn-danger rounded">&#128465;</button>
-				      	:
-				      	<div></div>
-				      }
 				    </div>
 						))}
 				</div>
