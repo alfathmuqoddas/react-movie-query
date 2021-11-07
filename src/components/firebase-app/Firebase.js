@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collection, orderBy, query, onSnapshot, doc, deleteDoc, addDoc } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getFirestore, collection, orderBy, query, onSnapshot, addDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 import Layout from '../../Layout/Layout';
 import Navbar from "../../Layout/Navbar"; 
 
@@ -71,7 +71,7 @@ const Firebase = () => {
 				{ userAuth ? 
 				<div className="my-5">
 					<h3 className="text-center mb-3">Add Task</h3>
-					<form onSubmit={handleSubmit} className="mx-auto" style={{width: "500px"}}>
+					<form onSubmit={handleSubmit} className="mx-auto w-100" style={{maxWidth: "500px"}}>
 						<input type="text" className="form-control mb-2" placeholder="enter title.." value={title} onChange={(e) => setTitle(e.target.value)} />
 						<input type="text" className="form-control mb-2" placeholder="enter description.." value={desc} onChange={(e) => setDesc(e.target.value)} />
 						<input type="submit" className="input-group-text btn btn-primary" value="+" />
@@ -83,7 +83,7 @@ const Firebase = () => {
 				</div>
 				}
 				
-				<div className="mx-auto mb-5" style={{width: "500px"}}>
+				<div className="mx-auto mb-5 w-100" style={{maxWidth: "500px"}}>
 					{ tasks.map((task) =>(
 					<div className="task d-flex shadowHover justify-content-between align-items-center shadow-sm rounded-3 p-2 my-3" key={task.id}>
 				      <div>

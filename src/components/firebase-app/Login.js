@@ -38,7 +38,7 @@ const Login = () => {
 			:
 			<div className="container my-5">
 				<h3 className="text-center">Login</h3>
-				<form onSubmit={handleRegister} className="mx-auto my-4" style={{width: "500px"}}>
+				<form onSubmit={handleRegister} className="mx-auto my-4 w-100" style={{maxWidth: "500px"}}>
 					<label htmlFor="email">Email</label>
 					<input type="email" name="email" className="form-control mt-2 mb-3" placeholder="enter email..." value={email} onChange={(e) => setEmail(e.target.value)} required />
 					<label htmlFor="password">Password</label>
