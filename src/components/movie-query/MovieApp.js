@@ -10,28 +10,27 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
   //const [loading, setLoading] = useState(false);
 
-  const getMovies = async (searchValue) =>  {
+  const getMovies = async (e) =>  {
+    e.preventDefault();
     const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=af1284eb&`
     const res = await fetch(url);
     const resJson = await res.json();
     if (resJson.Search) {
       setMovies(resJson.Search);
     }
+    setSearchValue('');
   };
-
-  useEffect(() => {
-    getMovies(searchValue);
-  }, [searchValue]);
 
   return (
     <>
       <Layout>
         <div className="">
-          <h1 className="mb-2 mt-5">React Movie App</h1>
-          <form className="input-group mx-auto w-100" style={{width: '500px'}}>
+          <h1 className="mb-3 mt-5 text-center">React Movie App</h1>
+          <form className="input-group mx-auto w-100" onSubmit={getMovies} style={{maxWidth: '500px'}}>
               <input type="text" className="form-control" value={searchValue}
-              onChange={(event) => setSearchValue(event.target.value)}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder='Type to search...' />
+              <input type="submit" className="btn btn-primary" value="search" />
           </form>
         </div>
 

@@ -9,20 +9,19 @@ const MovieDetail = () => {
 	const [movieDetail, setMovieDetail] = useState([]);
   	const [loading, setLoading] = useState(false);
 
-	const getMovieDetail = async () => {
-		try {
-			const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=af1284eb&`
-		    console.log(url);
-		    const res = await fetch(url);
-		    const resJson = await res.json();
-		    setMovieDetail(resJson);
-		    setLoading(true);
-		} catch (e) {
-			console.log(e);
-		}
-	}
-
 	useEffect(() => {
+		const getMovieDetail = async () => {
+			try {
+				const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=af1284eb&`
+			    console.log(url);
+			    const res = await fetch(url);
+			    const resJson = await res.json();
+			    setMovieDetail(resJson);
+			    setLoading(true);
+			} catch(err) {
+				console.log(err);
+			}
+		}
 		getMovieDetail();
 	}, []);
 

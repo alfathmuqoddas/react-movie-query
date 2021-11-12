@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-export default const ReactDrums = () => {
+export default function ReactDrums() {
 
   const [display, setDisplay] = useState('');
  
@@ -51,16 +51,16 @@ export default const ReactDrums = () => {
       }
  
     function playAudio() {
-      const audio = document.getElementById(props.key4);
+      const audio = document.getElementById(props.soundId);
       audio.play();
     } 
     
     return (
       <>
-              <button onClick={playAudio} className="btn btn-primary p-4 m-1 drum-pad w-100" id={props.name}>
-                {props.key2}
-                <audio className="clip" id={props.key3} src={props.sound} type="audio/mpeg" />
-              </button>
+        <button onClick={playAudio} className="btn btn-primary p-4 m-1 drum-pad w-100" id={props.name}>
+          {props.label}
+          <audio className="clip" id={props.soundId} src={props.sound} type="audio/mpeg" />
+        </button>
       </>
     );
   }
@@ -68,16 +68,17 @@ export default const ReactDrums = () => {
   return (
   <>
       <div className="container">
-        <h1 className="text-center">React Drum</h1>
+        <h1 className="text-center my-5">React Drum</h1>
         <div id="drum-machine">
           <div id="display">{display}</div>
-          <div className="row row-cols-3 mx-auto" style={{maxWidth: '500px'}}>
-          { drums.map(drum => (
-            <div key={drum.key} className="col">
-            <DrumMachine key1={drum.key} key2={drum.key} key3={drum.key} key4={drum.key} sound={drum.sound} name={drum.name} keyCodes={drum.keyCodes} nameDisplay={drum.name} />
+            <div className="row row-cols-3 mx-auto" style={{maxWidth: '500px'}}>
+              { drums.map(drum => (
+                <div key={drum.key} className="col">
+                  <DrumMachine key1={drum.key} label={drum.key} soundId={drum.key} sound={drum.sound} name={drum.name} keyCodes={drum.keyCodes} nameDisplay={drum.name} />
+                </div>
+              ))}
             </div>
-          ))}
-          </div>
+            <p className="text-center my-3">Play with your keyboard or click the button</p>
         </div>
       </div>
   </>
