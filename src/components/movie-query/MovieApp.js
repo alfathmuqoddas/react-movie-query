@@ -30,19 +30,19 @@ const App = () => {
               <input type="text" className="form-control" value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder='Type to search...' />
-              <input type="submit" className="btn btn-primary" value="search" />
+              <input type="submit" className="btn btn-primary" value="Search" />
           </form>
         </div>
 
         <div className='row row-cols-md-4 row-cols-2 my-5 gy-2 gx-0'>
           {movies.map((movie, index) =>
-            <div className='col bg-dark'>
-              <div className='p-2 bright position-relative'>
+            <div className='col'>
+              <div className='bright position-relative rounded-3' style={{width:'250px',height:'375px',backgroundColor:'black',padding:'5px'}}>
                 <Link to={{
                   pathname: `/movie/${movie.imdbID}`,
                   state: { movie }, //pass the data so that you can use it via useLocation
                   }}>
-                  <img src={movie.Poster} alt='movie' className="w-100 rounded-3" />
+                  <img src={movie.Poster} alt='movie' className="rounded-3" style={{maxWidth:'100%',maxHeight:'100%'}}/>
                   <div className="position-absolute top-50 start-50 translate-middle middle text-light"><h1>+</h1></div>
                 </Link>
               </div>
