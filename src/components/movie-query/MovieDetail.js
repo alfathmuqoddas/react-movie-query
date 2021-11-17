@@ -27,6 +27,12 @@ const MovieDetail = () => {
 
 	return(
 		<>
+		<nav class="navbar navbar-dark bg-primary">
+          <div class="container px-md-5">
+            <a href="#/movie" class="navbar-brand">React Movie App</a>
+          </div>
+        </nav>
+
 		<Layout>
 			{loading ? 
 			<div className="row my-5 gx-5">
@@ -53,7 +59,7 @@ const MovieDetail = () => {
 	    				<li className="list-group-item"><strong>Writer:</strong> {movieDetail.Writer}</li>
 	    				<li className="list-group-item"><strong>Starring:</strong> {movieDetail.Actors}</li>
 	    				<li className="list-group-item"><strong>Release:</strong> {movieDetail.Released}</li>
-	    				<li className="list-group-item"><strong>Duraion:</strong> {movieDetail.Runtime}</li>
+	    				<li className="list-group-item"><strong>Duration:</strong> {movieDetail.Runtime}</li>
 	    			</ul>
 	    		</div>
 	      	</div>
