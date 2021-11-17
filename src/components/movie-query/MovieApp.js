@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react';
+import React, { useState }from 'react';
 import {Link} from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 //import Navbar from '../../Layout/Navbar';
@@ -24,10 +24,10 @@ const App = () => {
 
   return (
     <>
-        <nav class="navbar navbar-dark bg-primary">
-          <div class="container px-md-5">
-            <a href="#/movie" class="navbar-brand">React Movie App</a>
-            <form className="d-flex" onSubmit={getMovies} style={{maxWidth: '500px'}}>
+        <nav className="navbar navbar-dark bg-primary">
+          <div className="container px-md-5">
+            <a href="#/movie" className="navbar-brand">React Movie App</a>
+            <form className="d-flex" onSubmit={getMovies}>
               <input type="text" className="form-control me-2" value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder='Search for movies...' />
@@ -38,10 +38,10 @@ const App = () => {
 
         <Layout>
         { loading ? 
-        <div className='row row-cols-md-4 row-cols-2 my-5 gy-2 gx-2 gx-md-0'>
+        <div className='row row-cols-md-4 row-cols-2 py-5 gy-2 gx-2 gx-lg-0'>
           {movies.map((movie, index) =>
-            <div className='col'>
-              <div className='bright position-relative rounded-3' style={{width:'250px',height:'375px',backgroundColor:'black',padding:'5px'}}>
+            <div className='col' key={index}>
+              <div className='d-flex justify-content-center align-items-center bright position-relative rounded-3' style={{maxWidth:'250px',height:'375px',backgroundColor:'black',padding:'5px'}}>
                 <Link to={{
                   pathname: `/movie/${movie.imdbID}`,
                   state: { movie }, //pass the data so that you can use it via useLocation

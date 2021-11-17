@@ -27,9 +27,9 @@ const MovieDetail = () => {
 
 	return(
 		<>
-		<nav class="navbar navbar-dark bg-primary">
-          <div class="container px-md-5">
-            <a href="#/movie" class="navbar-brand">React Movie App</a>
+		<nav className="navbar navbar-dark bg-primary">
+          <div className="container px-md-5">
+            <a href="#/movie" className="navbar-brand">React Movie App</a>
           </div>
         </nav>
 
