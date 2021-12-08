@@ -25,7 +25,7 @@ const Navbar = (props) => {
 			  <input type="checkbox" id="nav-check" />
 			  <div className="nav-header">
 			    <div className="nav-title">
-			      <Link to="/firebase-app" className="text-light text-decoration-none">React Firebase</Link>
+			      <Link to="/firebase-app" className="text-light text-decoration-none">React Firebase Issue Tracker</Link>
 			    </div>
 			  </div>
 			  <div className="nav-btn">
