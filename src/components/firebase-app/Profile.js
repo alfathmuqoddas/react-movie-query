@@ -52,8 +52,10 @@ const Profile = () => {
 						{ tasks.map((task) =>(
 						<div className="task d-flex shadowHover justify-content-between align-items-center shadow-sm rounded-3 p-2 my-3" key={task.id}>
 					      <div>
-						      <h4>{task.title}</h4>
-						      <p>{task.desc}</p>
+					      	  <p>Issue ID: {task.IssueID}</p>
+						      <h4>Description: {task.title}</h4>
+						   	  <p>Severity: {task.sev}</p>
+						      <p>Assigned To: {task.desc}</p>
 						  </div>
 					      <button onClick={() => handleDelete(task.id)} className="btn btn-danger rounded">&#128465;</button>
 					    </div>

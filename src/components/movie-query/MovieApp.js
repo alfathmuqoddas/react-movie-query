@@ -31,7 +31,7 @@ const App = () => {
               <input type="text" className="form-control me-2" value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder='Search for movies...' />
-              <input type="submit" className="btn btn-outline-light" value="Search" />
+              <input type="submit" className="btn btn-danger" value="Search" />
           </form>
           </div>
         </nav>

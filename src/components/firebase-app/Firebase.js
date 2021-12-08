@@ -26,6 +26,7 @@ const Firebase = () => {
 	//this below is adding task
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
+	const [sev, setSev] = useState("Low");
 	//const [imgArray, setImgArray] = useState("");
 
 	//auth state
@@ -38,8 +39,10 @@ const Firebase = () => {
 		await addDoc(collection(db, "tasks"), {
 			title: title,
 			desc: desc,
+			sev: sev,
 			//array: arr,
 			uid,
+			IssueID: new Date().valueOf(),
 			createdAt: new Date(),
 		});
 		setTitle("");
@@ -70,25 +73,40 @@ const Firebase = () => {
 			<div className="container">
 				{ userAuth ? 
 				<div className="my-5">
-					<h3 className="text-center mb-3">Add Task</h3>
+					<h3 className="text-center mb-3">Add Issue</h3>
 					<form onSubmit={handleSubmit} className="mx-auto w-100" style={{maxWidth: "500px"}}>
-						<input type="text" className="form-control mb-2" placeholder="enter title.." value={title} onChange={(e) => setTitle(e.target.value)} />
-						<input type="text" className="form-control mb-2" placeholder="enter description.." value={desc} onChange={(e) => setDesc(e.target.value)} />
+						<label htmlFor="description">Description</label>
+						<input name="description" type="text" className="form-control mb-2" placeholder="enter Issue Description" value={title} onChange={(e) => setTitle(e.target.value)} />
+						<label htmlFor="severity">Severity</label>
+				          <select
+				            className="form-select mb-3"
+				            value={sev}
+				            onChange={(e) => setSev(e.target.value)}
+				            name="severity"
+				          >
+				            <option value="Low">Low</option>
+				            <option value="Medium">Medium</option>
+				            <option value="High">High</option>
+				          </select>
+						<label htmlFor="assigned">Assigned To</label>
+						<input name="assigned" type="text" className="form-control mb-2" placeholder="Enter Assigned To" value={desc} onChange={(e) => setDesc(e.target.value)} />
 						<input type="submit" className="input-group-text btn btn-primary" value="+" />
 					</form>
 				</div> 
 				: 
 				<div className="text-center my-5">
-					<h3>Login to Create Task</h3>
+					<h3>Login to Create Issue</h3>
 				</div>
 				}
 				
 				<div className="mx-auto mb-5 w-100" style={{maxWidth: "500px"}}>
 					{ tasks.map((task) =>(
-					<div className="task d-flex shadowHover justify-content-between align-items-center shadow-sm rounded-3 p-2 my-3" key={task.id}>
+					<div className="task d-flex justify-content-between align-items-center bg-light rounded p-3 my-3" key={task.id}>
 				      <div>
-					      <h4>{task.title}</h4>
-					      <p>{task.desc}</p>
+				      	  <p>Issue ID: {task.IssueID}</p>
+					      <h4>Description: {task.title}</h4>
+					   	  <p>Severity: {task.sev}</p>
+					      <p>Assigned To: {task.desc}</p>
 					  </div>
 				    </div>
 						))}
