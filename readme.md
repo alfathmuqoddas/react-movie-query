@@ -1,7 +1,7 @@
 ![firebase-issue-tracker](https://i.ibb.co/p1fV3zM/firebase-task.png)
 
 # Firebase Issue Tracker
-a Full stack web application for creating and tracking Issue, built with React as the fron-end and Firebase as back-end. Firebase Service that I use for this project is Firebase Firestore Database and Firebase Authentication.
+A Full stack web application for creating and tracking Issue, built with React as the fron-end and Firebase as back-end. Firebase Service that I use for this project is Firebase Firestore Database and Firebase Authentication. With Firebase Authentication user can register and login to app and all data are stored in Firebase Firestore Database.
 
 ## Technology Used
 For this project I'm using React, Firebase Firestore, and Firebase Authentication, and also using Bootstrap for creating simple and clean ui.
