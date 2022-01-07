@@ -65,7 +65,11 @@ const Firebase = () => {
 		return () => unsub();
 	}, []);
 	// above is for diplaying task / data from db
-
+	
+	const lowBadge = 'badge bg-success';
+	const medBadge ='badge bg-warning';
+	const hiBadge = 'badge bg-danger';
+	
 	return (
 		<>
 			<Navbar />
@@ -105,7 +109,7 @@ const Firebase = () => {
 				      <div>
 				      	  <p>Issue ID: {task.IssueID}</p>
 					      <h4>Description: {task.title}</h4>
-					   	  <p>Severity: {task.sev}</p>
+					   	  <p className={task.sev === 'Low' ? lowBadge : task.sev === 'Medium' ? medBadge : hiBadge }>{task.sev}</p>
 					      <p>Assigned To: {task.desc}</p>
 					  </div>
 				    </div>
