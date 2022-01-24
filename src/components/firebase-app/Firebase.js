@@ -18,6 +18,10 @@ export const app = initializeApp(firebaseConfig);
 export const db = getFirestore();
 export const auth = getAuth();
 
+export const lowBadge = 'badge bg-success';
+export const medBadge ='badge bg-warning';
+export const hiBadge = 'badge bg-danger';
+
 console.log(app);
 console.log(db);
 
@@ -53,6 +57,7 @@ const Firebase = () => {
 
 	// below is for diplaying task / data from db
 	const [tasks, setTasks ] = useState([]);
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		const q = query(collection(db, "tasks"), orderBy("createdAt", "desc"));
 		const unsub = onSnapshot(q, (querySnapshot) => {
@@ -61,14 +66,11 @@ const Firebase = () => {
 				taskArray.push({...doc.data(), id: doc.id});
 			});
 			setTasks(taskArray);
+			setLoading(false);
 		});
 		return () => unsub();
 	}, []);
 	// above is for diplaying task / data from db
-	
-	const lowBadge = 'badge bg-success';
-	const medBadge ='badge bg-warning';
-	const hiBadge = 'badge bg-danger';
 	
 	return (
 		<>
@@ -83,7 +85,7 @@ const Firebase = () => {
 						<input name="description" type="text" className="form-control mb-2" placeholder="enter Issue Description" value={title} onChange={(e) => setTitle(e.target.value)} />
 						<label htmlFor="severity">Severity</label>
 				          <select
-				            className="form-select mb-3"
+				            className="form-select mb-2"
 				            value={sev}
 				            onChange={(e) => setSev(e.target.value)}
 				            name="severity"
@@ -94,7 +96,7 @@ const Firebase = () => {
 				          </select>
 						<label htmlFor="assigned">Assigned To</label>
 						<input name="assigned" type="text" className="form-control mb-2" placeholder="Enter Assigned To" value={desc} onChange={(e) => setDesc(e.target.value)} />
-						<input type="submit" className="input-group-text btn btn-primary" value="+" />
+						<input type="submit" className="input-group-text btn btn-primary" value="Submit" />
 					</form>
 				</div> 
 				: 
@@ -104,7 +106,8 @@ const Firebase = () => {
 				}
 				
 				<div className="mx-auto mb-5 w-100" style={{maxWidth: "500px"}}>
-					{ tasks.map((task) =>(
+				{ loading ? "Loading..." :
+					tasks.map((task) =>(
 					<div className="task d-flex justify-content-between align-items-center bg-light rounded p-3 my-3" key={task.id}>
 				      <div>
 				      	  <p>Issue ID: {task.IssueID}</p>
@@ -113,7 +116,8 @@ const Firebase = () => {
 					      <p>Assigned To: {task.desc}</p>
 					  </div>
 				    </div>
-						))}
+						))
+				}
 				</div>
 			</div>
 		</Layout>

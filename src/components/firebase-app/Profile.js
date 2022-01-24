@@ -5,6 +5,7 @@ import { collection, orderBy, query, onSnapshot, doc, deleteDoc, where } from 'f
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "./Firebase";
 import Layout from '../../Layout/Layout';
+import { lowBadge, medBadge, hiBadge } from "./Firebase";
 
 const Profile = () => {
 	const user = getAuth().currentUser;
@@ -50,14 +51,14 @@ const Profile = () => {
 					</div>
 					<div className="mx-auto mb-5 w-100" style={{maxWidth: "500px"}}>
 						{ tasks.map((task) =>(
-						<div className="task d-flex shadowHover justify-content-between align-items-center shadow-sm rounded-3 p-2 my-3" key={task.id}>
+						<div className="task shadowHover shadow-sm rounded-3 p-2 my-3" key={task.id}>
 					      <div>
 					      	  <p>Issue ID: {task.IssueID}</p>
 						      <h4>Description: {task.title}</h4>
-						   	  <p>Severity: {task.sev}</p>
+						   	  <p className={task.sev === 'Low' ? lowBadge : task.sev === 'Medium' ? medBadge : hiBadge }>{task.sev}</p>
 						      <p>Assigned To: {task.desc}</p>
-						  </div>
-					      <button onClick={() => handleDelete(task.id)} className="btn btn-danger rounded">&#128465;</button>
+					          <button onClick={() => handleDelete(task.id)} className="btn btn-sm btn-danger">&#128465; Delete</button>
+					      </div>
 					    </div>
 						))}
 					</div>
