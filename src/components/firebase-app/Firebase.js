@@ -78,7 +78,7 @@ const Firebase = () => {
 			<Layout>
 			<div className="container">
 				{ userAuth ? 
-				<div className="my-5">
+				<div className="pt-5">
 					<h3 className="text-center mb-3">Add Issue</h3>
 					<form onSubmit={handleSubmit} className="mx-auto w-100" style={{maxWidth: "500px"}}>
 						<label htmlFor="description">Description</label>
@@ -100,13 +100,15 @@ const Firebase = () => {
 					</form>
 				</div> 
 				: 
-				<div className="text-center my-5">
+				<div className="text-center pt-5">
 					<h3>Login to Create Issue</h3>
 				</div>
 				}
 				
-				<div className="mx-auto mb-5 w-100" style={{maxWidth: "500px"}}>
-				{ loading ? "Loading..." :
+				<div className="mx-auto py-5 w-100" style={{maxWidth: "500px"}}>
+				{ loading ? 
+					<div className="text-center py-5"><h1>Loading...</h1></div>
+					 :
 					tasks.map((task) =>(
 					<div className="task d-flex justify-content-between align-items-center bg-light rounded p-3 my-3" key={task.id}>
 				      <div>

@@ -35,7 +35,7 @@ const MovieDetail = () => {
 
 		<Layout>
 			{loading ? 
-			<div className="row my-5 gx-5">
+			<div className="row py-5 gx-5">
 	    		<div className="col-12 col-md-4 mb-4 text-center">
 	    			<img src={movieDetail.Poster} alt="movie-poster" className="w-100 rounded-3" />
 	    		</div>
