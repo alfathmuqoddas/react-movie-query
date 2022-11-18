@@ -57,7 +57,7 @@ const Profile = () => {
 						      <h4>Description: {task.title}</h4>
 						   	  <p className={task.sev === 'Low' ? lowBadge : task.sev === 'Medium' ? medBadge : hiBadge }>{task.sev}</p>
 						      <p>Assigned To: {task.desc}</p>
-					          <button onClick={() => handleDelete(task.id)} className="btn btn-sm btn-danger">&#128465; Delete</button>
+					          <button onClick={() => handleDelete(task.id)} className="btn btn-sm btn-danger">🗑️ Delete</button>
 					      </div>
 					    </div>
 						))}
